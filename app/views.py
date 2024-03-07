@@ -92,6 +92,13 @@ def files():
     images = get_uploaded_images()
     return render_template('files.html', images=images)
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('User Logged out, returned to home page')
+    return redirect(url_for('home'))
+
 ###
 # The functions below should be applicable to all Flask apps.
 ###
